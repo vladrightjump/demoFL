@@ -1,0 +1,16 @@
+export const testData = {
+  phoneNum1: "765555111",
+  phoneNum2: "765555222",
+  wrongNum1: "123456789",
+  wrongNum2: "123",
+  empthyField: "",
+  wrongNumErorr: "Numărul nu este corect",
+  fillUpError: "Completează-ți numărul",
+  countryCode: "+40",
+  fillUpTheNumberMessage: "Completează-ți numărul",
+  wrongNummberMessage: " Numărul nu este corect ",
+  email: "tester@teste.tester",
+  validationCode: " 111111",
+  wrongvalidationCode: "222222",
+  shortValidationCode: "9",
+};
