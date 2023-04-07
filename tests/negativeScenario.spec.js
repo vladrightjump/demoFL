@@ -20,7 +20,7 @@ test.describe("Negative Scenarios", () => {
       await addphonenumberPage.addThePhoneNumber(testData.wrongNum1);
       await addphonenumberPage.checkTheErrorMessage(testData.wrongNumErorr);
     });
-    test("The user is using a wrong number short ", async ({ page }) => {
+    test("The user is using a wrong and short number ", async ({ page }) => {
       const welcomepage = new welcomePage(page);
       await welcomepage.nuAmFacebook();
       const addphonenumberPage = new AddPhoneNumberPage(page);
@@ -28,7 +28,9 @@ test.describe("Negative Scenarios", () => {
       await addphonenumberPage.addThePhoneNumber(testData.wrongNum2);
       await addphonenumberPage.checkTheErrorMessage(testData.fillUpError);
     });
-    test("Empty number field", async ({ page }) => {
+    test("The user leaves the Phone number field empty and presses continue", async ({
+      page,
+    }) => {
       const welcomepage = new welcomePage(page);
       await welcomepage.nuAmFacebook();
       const addphonenumberPage = new AddPhoneNumberPage(page);
@@ -59,7 +61,7 @@ test.describe("Negative Scenarios", () => {
         testData.wrongvalidationCode
       );
     });
-    test("The user is using an wrong Validation Code short", async ({
+    test("The user is using an wrong Validation Code one number", async ({
       page,
     }) => {
       const welcomepage = new welcomePage(page);
@@ -73,7 +75,7 @@ test.describe("Negative Scenarios", () => {
         testData.shortValidationCode
       );
     });
-    test("No validation code is added", async ({ page }) => {
+    test("The user didn't add the Validation code  ", async ({ page }) => {
       const welcomepage = new welcomePage(page);
       await welcomepage.nuAmFacebook();
       const addphonenumberPage = new AddPhoneNumberPage(page);

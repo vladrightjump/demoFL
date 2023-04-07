@@ -34,6 +34,25 @@ export class validateEmailPage {
     this.popUpTesendMessage = page.getByText(
       "Email-ul a fost retrimis Dacă nu îl găseşti verifică în SPAM. Dacă nu este acolo"
     );
+    this.frameSuportOceanCredit = page
+      .frameLocator('[id="fc_widget"]')
+      .getByRole("link", {
+        name: "Channel icon Suport Ocean Credit Bună ✋ Cu ce te pot ajuta azi? Scrie-mi întrebările sau nelămuririle tale aici.",
+      });
+
+    this.frameSupportMessage = page
+      .frameLocator('[id="fc_widget"]')
+      .getByText(
+        "Bună ✋ Cu ce te pot ajuta azi? Scrie-mi întrebările sau nelămuririle tale aici."
+      );
+    this.frameMessageField = page
+      .frameLocator('[id="fc_widget"]')
+      .locator('[data-test-id="ui-editor"]');
+    this.frameIformationMessage = page
+      .frameLocator('[id="fc_widget"]')
+      .getByText(
+        "Don't miss out on any replies! Allow push notifications? Yes No"
+      );
   }
   checkTheSuccessfulMessage = async () => {
     await this.weSentYouMessage.isVisible();
@@ -46,8 +65,19 @@ export class validateEmailPage {
   };
   constactSuport = async () => {
     await this.contactSupportButton.waitFor();
+    await this.page.waitForTimeout(2000);
     await this.contactSupportButton.click({ timeout: 3000 });
+    await this.page.waitForTimeout(5000);
+    await this.frameSuportOceanCredit.click();
+    await this.page.waitForTimeout(3000);
+    await this.frameSupportMessage.isVisible();
+    await this.frameMessageField.focus();
+    await this.frameMessageField.fill("Salut");
+    await this.page.keyboard.press("Enter");
+    await this.page.waitForTimeout(2000);
+    await this.frameIformationMessage.isVisible();
   };
+  sendAmessageToSupport = async () => {};
   InviteAfrend = async () => {
     await this.sideBarButton.waitFor();
     await this.sideBarButton.click();

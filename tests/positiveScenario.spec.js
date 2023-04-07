@@ -29,6 +29,22 @@ test.describe("Full e2e testing positive", () => {
       await validateEmailpage.InviteAfrend();
       await validateEmailpage.signOut();
     });
+
+    test("The user can write to the support ", async ({ page }) => {
+      const welcomepage = new welcomePage(page);
+      await welcomepage.nuAmFacebook();
+      const addphonenumberPage = new AddPhoneNumberPage(page);
+      await addphonenumberPage.checkTheElementsOnPage(testData.countryCode);
+      await addphonenumberPage.addThePhoneNumber(testData.phoneNum1);
+      await addphonenumberPage.agreePrivacyPolicyAndContinue();
+      const verifyphonePage = new veryfyPhonePage(page);
+      await verifyphonePage.userPessonResendValidationCodeButton();
+      await verifyphonePage.fillUptheValditationCode(testData.validationCode);
+      const validateEmailpage = new validateEmailPage(page);
+      await validateEmailpage.checkTheSuccessfulMessage();
+      await validateEmailpage.checkResendEmail();
+      await validateEmailpage.constactSuport();
+    });
     test("Trying to connect with facebook", async ({ page }) => {
       const welcomepage = new welcomePage(page);
       await welcomepage.iHaveFacebook();
